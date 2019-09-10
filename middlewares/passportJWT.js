@@ -1,5 +1,6 @@
 const passport = require('passport')
 const config = require('../config/index')
+const User = require('../models/user')
 var JwtStrategy = require('passport-jwt').Strategy,
     ExtractJwt = require('passport-jwt').ExtractJwt;
 var opts = {}
@@ -20,3 +21,5 @@ passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
         }
     });
 }));
+
+module.exports.isLogin = passport.authenticate('jwt',{session:false})
