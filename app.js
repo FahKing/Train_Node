@@ -6,6 +6,7 @@ var logger = require('morgan');
 // --------------Import Route-----------------
 var settingRouter = require('./routes/setting');
 var usersRouter = require('./routes/users');
+var shopRouter = require('./routes/shop');
 
 // --------------Import Midleware-----------------
 var errorHandler = require('./middlewares/errorHandler')
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/users', usersRouter);
 app.use('/api/setting', passportJWT.isLogin, settingRouter);
+app.use('/api/shop', shopRouter);
 
 app.use(errorHandler);
 
