@@ -17,6 +17,6 @@ Schema.methods.validPassword = async function (password){
     return isLogin;
 }
 
-const User = mongoose.model('User', Schema)
+const User = mongoose.model('User', Schema, "users")
 
 module.exports = User
