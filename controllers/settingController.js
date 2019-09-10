@@ -1,7 +1,13 @@
-// const User = require('../models/user')
+const ScSetting = require('../models/setting')
 
 exports.index = async (req,res,next) => {
     
-    res.send('OK')
+    // const {name,age,created} = req.body
+    
+    const findsetting = await ScSetting.find()
+
+    res.status(200).json({
+        data:findsetting
+    })
 
 }
