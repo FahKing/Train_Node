@@ -6,6 +6,6 @@ var Schema = new mongoose.Schema({
     created: {type: String, required:true, trim:true}
 })
 
-const ScSetting = mongoose.model('Setting', Schema)
+const ScSetting = mongoose.model('Setting', Schema, "settings")
 
 module.exports = ScSetting
