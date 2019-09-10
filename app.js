@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 
 // --------------Import Midleware-----------------
 var errorHandler = require('./middlewares/errorHandler')
+var passportJWT = require('./middlewares/passportJWT')
 
 const mongoose = require('mongoose');
 const config = require('./config/index')
@@ -24,7 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/users', usersRouter);
-app.use('/api/setting', settingRouter);
+app.use('/api/setting', passportJWT.isLogin, settingRouter);
 
 app.use(errorHandler);
 
