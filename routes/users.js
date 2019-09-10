@@ -11,5 +11,6 @@ router.post('/register',
     body('password').not().isEmpty().withMessage('Please input Password')
         .isLength({min:5}).withMessage('Please input Password more then 5 charecter'),
     usercontroller.register);
-
+    
+router.post('/login', usercontroller.login)
 module.exports = router;
