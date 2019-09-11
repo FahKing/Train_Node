@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const Schema = new mongoose.Schema({
+const schema = new mongoose.Schema({
     name: {type: String, required:true},
     photo: {type: String},
     location: {
@@ -9,9 +9,18 @@ const Schema = new mongoose.Schema({
     }
 },
 {
-    timestamp:true
+    timestamp:true,
+    collection: 'shops',
+    toJSON:{virtuals:true},
+    toObject:{virtuals:true}
 })
 
-const Shop = mongoose.model('Shop', Schema,"shops")
+    schema.virtual('menus',{
+        ref:'Menu',
+        localField:'_id',
+        foreignField:'shop'
+    })
+
+const Shop = mongoose.model('shop', schema,"shops")
 
 module.exports = Shop
