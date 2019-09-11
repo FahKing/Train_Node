@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const usercontroller = require('../controllers/usercontroller')
 const {body} = require('express-validator')
+const passportJWT = require('../middlewares/passportJWT')
 /* GET users listing. */
 
 router.post('/register', 
@@ -13,4 +14,5 @@ router.post('/register',
     usercontroller.register);
     
 router.post('/login', usercontroller.login)
+router.get('/me',passportJWT.isLogin, usercontroller.me)
 module.exports = router;

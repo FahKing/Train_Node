@@ -59,10 +59,9 @@ exports.login = async (req,res,next) => {
            throw error 
        }
        const token = jwt.sign({
-           id:user._id,
+           id: user._id,
            role: user.role
         },config.JWT_SECRET,{expiresIn:'5 days'})
-
 
        const  expires_in = jwt.decode(token)
       
@@ -76,4 +75,15 @@ exports.login = async (req,res,next) => {
     } catch (error) {
         next(error)
     }
+}
+
+exports.me = async(req,res,next) => {
+    return res.json({
+        user: {
+            id: req.user.id,
+            name: req.user.name,
+            email: req.user.email,
+            role: req.user.role
+        }
+    })
 }
