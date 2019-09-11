@@ -8,5 +8,5 @@ router.get('/menu', shopController.menu);
 
 router.get('/:id', shopController.getShopWithMenu);
 
-router.post('/',shopController.store)
+router.post('/store',shopController.store)
 module.exports = router;

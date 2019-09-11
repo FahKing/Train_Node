@@ -43,12 +43,18 @@ exports.getShopWithMenu = async (req,res,next) => {
 }
 
 exports.store = async (req,res,next) => {
+    try {
 
-    let shop = new Shop(req.body)
+        let shop = new Shop(req.body)
 
-    await shop.save()
+        await shop.save()
 
-    res.status(201).json({
-        message: 'Save Success'
-    })
+        res.status(201).json({
+            message: 'Insert Shop Success'
+        })
+        
+    } catch (error) {
+        next(error)
+    }
+    
 }
